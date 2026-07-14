@@ -1,43 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login - Sistem Kasir</title>
-</head>
+<script>
+function login() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
 
-<body>
-
-    <h1 align="center">SISTEM KASIR</h1>
-    <hr>
-
-    <h2 align="center">Login</h2>
-
-    <form>
-
-        <table align="center">
-
-            <tr>
-                <td>Username</td>
-                <td>:</td>
-                <td><input type="text" placeholder="Masukkan Username"></td>
-            </tr>
-
-            <tr>
-                <td>Password</td>
-                <td>:</td>
-                <td><input type="password" placeholder="Masukkan Password"></td>
-            </tr>
-
-            <tr>
-                <td colspan="3" align="center">
-                    <br>
-                    <input type="submit" value="Login">
-                    <input type="reset" value="Batal">
-                </td>
-            </tr>
-
-        </table>
-
-    </form>
-
-</body>
-</html>
+    if (username === "RONIATI" && password === "24110043") {
+        alert("Login berhasil");
+        window.location.href = "home.html";
+    } else {
+        alert("Username atau password salah");
+    }
+}
+</script>
