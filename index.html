@@ -1,78 +1,75 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Dashboard Sistem Kasir</title>
 
 <style>
 
 body{
-font-family:Arial,sans-serif;
-background:#f2f2f2;
-margin:0;
-padding:0;
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f4f6f9;
+}
+
+.header{
+    background:#0d6efd;
+    color:white;
+    padding:20px;
+    text-align:center;
 }
 
 .container{
-width:80%;
-margin:auto;
-margin-top:30px;
-background:white;
-padding:20px;
-border-radius:10px;
-box-shadow:0px 0px 10px gray;
+    width:90%;
+    margin:auto;
+    margin-top:40px;
 }
 
-h1{
-text-align:center;
-color:#0d6efd;
+.menu{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
 }
 
-p{
-text-align:center;
+.card{
+
+    width:220px;
+    height:140px;
+    background:white;
+    border-radius:10px;
+    box-shadow:0px 0px 10px rgba(0,0,0,0.2);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    transition:0.3s;
+
 }
 
-table{
-width:100%;
-border-collapse:collapse;
-margin-top:20px;
+.card:hover{
+
+    transform:scale(1.05);
+
 }
 
-th{
-background:#0d6efd;
-color:white;
-padding:10px;
+.card a{
+
+    text-decoration:none;
+    font-size:22px;
+    font-weight:bold;
+    color:#0d6efd;
+
 }
 
-td{
-border:1px solid #ccc;
-padding:10px;
-text-align:center;
-}
+.footer{
 
-.button{
-margin-top:30px;
-text-align:center;
-}
+    text-align:center;
+    margin-top:50px;
+    color:gray;
 
-button{
-padding:10px 20px;
-margin:8px;
-font-size:15px;
-cursor:pointer;
-border:none;
-background:#0d6efd;
-color:white;
-border-radius:5px;
-}
-
-button:hover{
-background:#084298;
-}
-
-a{
-text-decoration:none;
 }
 
 </style>
@@ -81,75 +78,44 @@ text-decoration:none;
 
 <body>
 
-<div class="container">
+<div class="header">
 
 <h1>SISTEM KASIR</h1>
-
-<p>Selamat Datang, Admin</p>
-
-<table>
-
-<tr>
-<th>No</th>
-<th>Menu</th>
-<th>Keterangan</th>
-</tr>
-
-<tr>
-<td>1</td>
-<td><a href="barang.html">Data Barang</a></td>
-<td>Tambah, Edit, Hapus Barang</td>
-</tr>
-
-<tr>
-<td>2</td>
-<td><a href="pencarian.html">Pencarian Barang</a></td>
-<td>Mencari Barang</td>
-</tr>
-
-<tr>
-<td>3</td>
-<td><a href="transaksi.html">Transaksi</a></td>
-<td>Melakukan Penjualan</td>
-</tr>
-
-<tr>
-<td>4</td>
-<td><a href="laporan.html">Laporan</a></td>
-<td>Melihat Laporan</td>
-</tr>
-
-<tr>
-<td>5</td>
-<td><a href="login.html">Logout</a></td>
-<td>Keluar dari Sistem</td>
-</tr>
-
-</table>
-
-<div class="button">
-
-<a href="barang.html">
-<button>Data Barang</button>
-</a>
-
-<a href="pencarian.html">
-<button>Pencarian</button>
-</a>
-
-<a href="transaksi.html">
-<button>Transaksi</button>
-</a>
-
-<a href="laporan.html">
-<button>Laporan</button>
-</a>
-
-<a href="login.html">
-<button>Logout</button>
-</a>
+<p>Dashboard Admin</p>
 
 </div>
+
+<div class="container">
+
+<div class="menu">
+
+<div class="card">
+<a href="barang.html">📦<br>Data Barang</a>
+</div>
+
+<div class="card">
+<a href="pencarian.html">🔍<br>Pencarian</a>
+</div>
+
+<div class="card">
+<a href="transaksi.html">🛒<br>Transaksi</a>
+</div>
+
+<div class="card">
+<a href="laporan.html">📄<br>Laporan</a>
+</div>
+
+<div class="card">
+<a href="login.html">🚪<br>Logout</a>
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+<p>© 2026 Sistem Kasir</p>
 
 </div>
 
