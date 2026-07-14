@@ -15,7 +15,7 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#f0fdf4,#dcfce7);
+background:linear-gradient(135deg,#ecfdf5,#d1fae5);
 }
 
 .container{
@@ -29,7 +29,7 @@ box-shadow:0 0 15px rgba(0,0,0,0.2);
 
 h1{
 text-align:center;
-color:#166534;
+color:#065f46;
 margin-bottom:20px;
 }
 
@@ -39,8 +39,8 @@ margin-bottom:15px;
 
 label{
 display:block;
-font-weight:bold;
 margin-bottom:5px;
+font-weight:bold;
 color:#374151;
 }
 
@@ -54,7 +54,7 @@ font-size:15px;
 
 input:focus{
 outline:none;
-border:2px solid #16a34a;
+border:2px solid #10b981;
 }
 
 .button{
@@ -64,9 +64,9 @@ margin-top:20px;
 
 button{
 padding:10px 18px;
+margin:5px;
 border:none;
 border-radius:8px;
-margin:5px;
 color:white;
 font-weight:bold;
 cursor:pointer;
@@ -98,7 +98,7 @@ opacity:0.9;
 
 .cari{
 margin-top:30px;
-margin-bottom:15px;
+margin-bottom:20px;
 }
 
 table{
@@ -107,7 +107,7 @@ border-collapse:collapse;
 }
 
 th{
-background:#166534;
+background:#065f46;
 color:white;
 padding:12px;
 }
@@ -123,7 +123,7 @@ background:#f9fafb;
 }
 
 tr:hover{
-background:#dcfce7;
+background:#d1fae5;
 cursor:pointer;
 }
 
@@ -179,7 +179,7 @@ text-decoration:none;
 
 <div class="cari">
 
-<input type="text" id="pencarian" placeholder="Cari Kode atau Nama Barang..." onkeyup="cariBarang()">
+<input type="text" id="pencarian" placeholder="Cari kode atau nama barang..." onkeyup="cariBarang()">
 
 </div>
 
@@ -192,6 +192,28 @@ text-decoration:none;
 <th>Harga</th>
 <th>Stok</th>
 </tr>
+<tr onclick="pilihBaris(this)">
+<td>1</td>
+<td>BR001</td>
+<td>Indomie</td>
+<td>3500</td>
+<td>100</td>
+</tr>
+
+<tr onclick="pilihBaris(this)">
+<td>2</td>
+<td>BR002</td>
+<td>Aqua 600ml</td>
+<td>5000</td>
+<td>80</td>
+</tr>
+
+<tr onclick="pilihBaris(this)">
+<td>3</td>
+<td>BR003</td>
+<td>Teh Botol</td>
+<td>6000</td>
+<td>50</td>
 </tr>
 
 </table>
@@ -200,38 +222,125 @@ text-decoration:none;
 
 <script>
 
-let nomor = 1;
-let barisDipilih = null;
+let nomor = 4;
+let baris = null;
 
 function simpan(){
 
-let kode = document.getElementById("kode").value.trim();
-let nama = document.getElementById("nama").value.trim();
-let harga = document.getElementById("harga").value.trim();
-let stok = document.getElementById("stok").value.trim();
+let kode=document.getElementById("kode").value;
+let nama=document.getElementById("nama").value;
+let harga=document.getElementById("harga").value;
+let stok=document.getElementById("stok").value;
 
-if(kode=="" || nama=="" || harga=="" || stok==""){
+if(kode==""||nama==""||harga==""||stok==""){
 
-alert("Semua data harus diisi.");
+alert("Semua data harus diisi");
 return;
 
 }
 
-let tabel = document.getElementById("tabelBarang");
+let tabel=document.getElementById("tabelBarang");
 
-let row = tabel.insertRow();
+let row=tabel.insertRow(-1);
 
-row.insertCell(0).innerHTML = nomor++;
-row.insertCell(1).innerHTML = kode;
-row.insertCell(2).innerHTML = nama;
-row.insertCell(3).innerHTML = harga;
-row.insertCell(4).innerHTML = stok;
+row.setAttribute("onclick","pilihBaris(this)");
 
-row.onclick = function(){
+row.insertCell(0).innerHTML=nomor++;
+row.insertCell(1).innerHTML=kode;
+row.insertCell(2).innerHTML=nama;
+row.insertCell(3).innerHTML=harga;
+row.insertCell(4).innerHTML=stok;
 
-barisDipilih = this;
+resetForm();
 
-document.getElementById("kode").value = this.cells[1].innerHTML;
-document.getElementById("nama").value = this.cells[2].innerHTML;
-document.getElementById("harga").value = this.cells[3].innerHTML;
-document.getElementById("stok").value = this.cells[4].
+alert("Data berhasil disimpan");
+
+}
+
+function pilihBaris(x){
+
+baris=x;
+
+document.getElementById("kode").value=x.cells[1].innerHTML;
+document.getElementById("nama").value=x.cells[2].innerHTML;
+document.getElementById("harga").value=x.cells[3].innerHTML;
+document.getElementById("stok").value=x.cells[4].innerHTML;
+
+}
+function editData(){
+
+if(baris==null){
+
+alert("Silakan pilih data yang akan diedit.");
+return;
+
+}
+
+baris.cells[1].innerHTML=document.getElementById("kode").value;
+baris.cells[2].innerHTML=document.getElementById("nama").value;
+baris.cells[3].innerHTML=document.getElementById("harga").value;
+baris.cells[4].innerHTML=document.getElementById("stok").value;
+
+alert("Data berhasil diubah.");
+
+}
+
+function hapusData(){
+
+if(baris==null){
+
+alert("Silakan pilih data yang akan dihapus.");
+return;
+
+}
+
+baris.remove();
+
+baris=null;
+
+resetForm();
+
+alert("Data berhasil dihapus.");
+
+}
+
+function resetForm(){
+
+document.getElementById("kode").value="";
+document.getElementById("nama").value="";
+document.getElementById("harga").value="";
+document.getElementById("stok").value="";
+
+}
+
+function cariBarang(){
+
+let input=document.getElementById("pencarian").value.toUpperCase();
+
+let tabel=document.getElementById("tabelBarang");
+
+let tr=tabel.getElementsByTagName("tr");
+
+for(let i=1;i<tr.length;i++){
+
+let kode=tr[i].cells[1].innerHTML.toUpperCase();
+let nama=tr[i].cells[2].innerHTML.toUpperCase();
+
+if(kode.indexOf(input)>-1 || nama.indexOf(input)>-1){
+
+tr[i].style.display="";
+
+}else{
+
+tr[i].style.display="none";
+
+}
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
