@@ -1,69 +1,54 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-
 <meta charset="UTF-8">
-<title>Transaksi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pencarian Barang</title>
 
 <style>
 
 body{
-font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#fff7ed,#ffe4c7);
-margin:0;
-padding:0;
+    font-family:Arial,sans-serif;
+    margin:0;
+    background:linear-gradient(135deg,#faf5ff,#ede9fe);
 }
 
 .container{
-width:70%;
-margin:40px auto;
-background:white;
-padding:30px;
-border-radius:15px;
-box-shadow:0 0 15px rgba(0,0,0,0.2);
+    width:85%;
+    margin:30px auto;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 0 15px rgba(0,0,0,0.2);
 }
 
 h1{
-text-align:center;
-color:#b45309;
-}
-
-label{
-font-weight:bold;
-display:block;
-margin-top:12px;
+    text-align:center;
+    color:#6d28d9;
 }
 
 input{
-width:100%;
-padding:10px;
-margin-top:5px;
-border:1px solid #ccc;
-border-radius:8px;
-box-sizing:border-box;
-}
-
-.button{
-margin-top:20px;
-text-align:center;
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    margin-bottom:20px;
+    font-size:15px;
+    box-sizing:border-box;
 }
 
 button{
-padding:10px 18px;
-margin:5px;
-border:none;
-border-radius:8px;
-color:white;
-font-size:15px;
-cursor:pointer;
+    padding:10px 18px;
+    margin:5px;
+    border:none;
+    border-radius:8px;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
 }
 
-.simpan{
-background:#16a34a;
-}
-
-.hitung{
-background:#ea580c;
+.cari{
+background:#7c3aed;
 }
 
 .reset{
@@ -78,6 +63,36 @@ button:hover{
 opacity:0.9;
 }
 
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th{
+    background:#6d28d9;
+    color:white;
+    padding:10px;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
+}
+
+tr:nth-child(even){
+    background:#faf5ff;
+}
+
+.menu{
+text-align:center;
+}
+
+a{
+text-decoration:none;
+}
+
 </style>
 
 </head>
@@ -86,33 +101,15 @@ opacity:0.9;
 
 <div class="container">
 
-<h1>TRANSAKSI PENJUALAN</h1>
+<h1>PENCARIAN BARANG</h1>
 
-<label>Tanggal</label>
-<input type="date" id="tanggal">
+<input type="text" id="cari" placeholder="Masukkan Kode atau Nama Barang">
 
-<label>Nama Kasir</label>
-<input type="text" id="kasir">
+<div class="menu">
 
-<label>Nama Barang</label>
-<input type="text" id="barang">
+<button class="cari" onclick="cariBarang()">Cari</button>
 
-<label>Harga Barang</label>
-<input type="number" id="harga">
-
-<label>Jumlah Beli</label>
-<input type="number" id="jumlah">
-
-<label>Total Bayar</label>
-<input type="number" id="total" readonly>
-
-<div class="button">
-
-<button class="hitung" onclick="hitungTotal()">Hitung</button>
-
-<button class="simpan" onclick="simpan()">Simpan</button>
-
-<button class="reset" onclick="resetForm()">Reset</button>
+<button class="reset" onclick="resetCari()">Reset</button>
 
 <a href="index.html">
 <button type="button" class="kembali">Kembali</button>
@@ -120,39 +117,105 @@ opacity:0.9;
 
 </div>
 
+<table id="tabelBarang">
+
+<tr>
+<th>No</th>
+<th>Kode</th>
+<th>Nama Barang</th>
+<th>Harga</th>
+<th>Stok</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>BR001</td>
+<td>Indomie</td>
+<td>3500</td>
+<td>100</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>BR002</td>
+<td>Aqua 600ml</td>
+<td>5000</td>
+<td>80</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>BR003</td>
+<td>Teh Botol</td>
+<td>6000</td>
+<td>50</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>BR004</td>
+<td>Kopi ABC</td>
+<td>2500</td>
+<td>120</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>BR005</td>
+<td>Gula Pasir</td>
+<td>16000</td>
+<td>40</td>
+</tr>
+
+</table>
+
 </div>
 
 <script>
 
-function hitungTotal(){
+function cariBarang(){
 
-var harga=parseInt(document.getElementById("harga").value)||0;
-var jumlah=parseInt(document.getElementById("jumlah").value)||0;
+var input=document.getElementById("cari").value.toUpperCase();
 
-document.getElementById("total").value=harga*jumlah;
+var tabel=document.getElementById("tabelBarang");
 
-}
+var tr=tabel.getElementsByTagName("tr");
 
-function resetForm(){
+for(var i=1;i<tr.length;i++){
 
-document.getElementById("tanggal").value="";
-document.getElementById("kasir").value="";
-document.getElementById("barang").value="";
-document.getElementById("harga").value="";
-document.getElementById("jumlah").value="";
-document.getElementById("total").value="";
+var kode=tr[i].getElementsByTagName("td")[1];
+var nama=tr[i].getElementsByTagName("td")[2];
 
-}
+if(kode && nama){
 
-function simpan(){
+var teksKode=kode.innerHTML.toUpperCase();
+var teksNama=nama.innerHTML.toUpperCase();
 
-if(document.getElementById("barang").value==""){
+if(teksKode.indexOf(input)>-1 || teksNama.indexOf(input)>-1){
 
-alert("Silakan isi data terlebih dahulu.");
+tr[i].style.display="";
 
 }else{
 
-alert("Transaksi berhasil disimpan.");
+tr[i].style.display="none";
+
+}
+
+}
+
+}
+
+}
+
+function resetCari(){
+
+document.getElementById("cari").value="";
+
+var tr=document.getElementById("tabelBarang").getElementsByTagName("tr");
+
+for(var i=1;i<tr.length;i++){
+
+tr[i].style.display="";
 
 }
 
