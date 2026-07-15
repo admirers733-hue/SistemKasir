@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html>
 <head>
     <title>Login - Sistem Kasir</title>
@@ -14,6 +15,97 @@
 
     <input type="submit" value="Login">
 </form>
+=======
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Login Sistem Kasir</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f3f4f6;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+.box{
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+width:350px;
+}
+
+h2{
+text-align:center;
+color:#2563eb;
+}
+
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+box-sizing:border-box;
+}
+
+button{
+width:100%;
+padding:10px;
+background:#2563eb;
+color:white;
+border:none;
+cursor:pointer;
+font-size:16px;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>Login Sistem Kasir</h2>
+
+<input type="text" id="username" placeholder="Username">
+
+<input type="password" id="password" placeholder="Password">
+
+<button onclick="login()">LOGIN</button>
+
+</div>
+
+<script>
+
+function login(){
+
+let username=document.getElementById("username").value.trim();
+let password=document.getElementById("password").value.trim();
+
+if(username==="RONIATI" && password==="24110043"){
+
+alert("Login Berhasil");
+
+window.location.href="index.html";
+
+}else{
+
+alert("Username atau Password Salah");
+
+}
+
+}
+
+</script>
+>>>>>>> develop
 
 </body>
 </html>

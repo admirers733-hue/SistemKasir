@@ -1,31 +1,257 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>Sistem Kasir</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dashboard Sistem Kasir</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f3f4f6;
+}
+
+.header{
+
+background:linear-gradient(135deg,#065f46,#10b981);
+color:white;
+padding:30px;
+text-align:center;
+
+}
+
+.header h1{
+
+font-size:34px;
+
+}
+
+.header p{
+
+margin-top:8px;
+font-size:18px;
+
+}
+
+.container{
+
+width:90%;
+margin:35px auto;
+
+}
+
+.menu{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+
+}
+
+.card{
+
+background:white;
+border-radius:15px;
+padding:35px;
+text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+transition:0.3s;
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.card a{
+
+text-decoration:none;
+color:#065f46;
+
+}
+
+.icon{
+
+font-size:55px;
+margin-bottom:15px;
+
+}
+
+.judul{
+
+font-size:22px;
+font-weight:bold;
+
+}
+
+.info{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-top:40px;
+
+}
+
+.box{
+
+background:white;
+padding:20px;
+border-radius:12px;
+text-align:center;
+box-shadow:0 5px 10px rgba(0,0,0,0.1);
+
+}
+
+.box h3{
+
+color:#065f46;
+margin-bottom:10px;
+
+}
+
+.box p{
+
+font-size:26px;
+font-weight:bold;
+color:#111827;
+
+}
+
+.footer{
+
+text-align:center;
+margin:40px;
+color:#6b7280;
+
+}
+
+</style>
+
 </head>
+
 <body>
 
-<h2>Login Sistem Kasir</h2>
+<div class="header">
 
-<input type="text" id="username" placeholder="Username"><br><br>
+<h1>SISTEM KASIR</h1>
 
-<input type="password" id="password" placeholder="Password"><br><br>
+<p>Selamat Datang, Admin</p>
 
-<button onclick="login()">Login</button>
+</div>
 
-<script>
-function login() {
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
+<div class="container">
 
-    if (username === "RONIATI" && password === "24110043") {
-        alert("Login berhasil");
-        window.location.href = "dashboard.html";
-    } else {
-        alert("Username atau password salah");
-    }
-}
-</script>
+<div class="menu">
+
+<div class="card">
+
+<a href="databarang.html">
+
+<div class="icon">📦</div>
+
+<div class="judul">Data Barang</div>
+
+</a>
+
+</div>
+
+<div class="card">
+
+<a href="pencarian.html">
+
+<div class="icon">🔍</div>
+
+<div class="judul">Pencarian</div>
+
+</a>
+
+</div>
+
+<div class="card">
+
+<a href="transaksi.html">
+
+<div class="icon">🛒</div>
+
+<div class="judul">Transaksi</div>
+
+</a>
+
+</div>
+<div class="card">
+
+<a href="laporan.html">
+
+<div class="icon">📊</div>
+
+<div class="judul">Laporan</div>
+
+</a>
+
+</div>
+
+<div class="card">
+
+<a href="logout.html">
+
+<div class="icon">🚪</div>
+
+<div class="judul">Logout</div>
+
+</a>
+
+</div>
+
+</div>
+
+<div class="info">
+
+<div class="box">
+
+<h3>Total Barang</h3>
+
+<p>120</p>
+
+</div>
+
+<div class="box">
+
+<h3>Total Transaksi</h3>
+
+<p>350</p>
+
+</div>
+
+<div class="box">
+
+<h3>Pendapatan Hari Ini</h3>
+
+<p>Rp2.350.000</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+<p>© 2026 Sistem Kasir | Dibuat oleh Roniati</p>
+
+</div>
 
 </body>
+
 </html>
