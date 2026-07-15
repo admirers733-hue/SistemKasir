@@ -1,18 +1,373 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
+
 <head>
-<title>Laporan</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Laporan Penjualan</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+
+background:#eef2f7;
+
+}
+
+.container{
+
+width:92%;
+margin:30px auto;
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0px 5px 15px rgba(0,0,0,0.15);
+
+}
+
+h1{
+
+text-align:center;
+color:#1f2937;
+margin-bottom:20px;
+
+}
+
+.info{
+
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+margin-bottom:25px;
+
+}
+
+.card{
+
+width:31%;
+background:linear-gradient(135deg,#2563eb,#1d4ed8);
+color:white;
+padding:20px;
+border-radius:12px;
+text-align:center;
+
+}
+
+.card h2{
+
+font-size:18px;
+margin-bottom:10px;
+
+}
+
+.card p{
+
+font-size:28px;
+font-weight:bold;
+
+}
+
+.filter{
+
+margin-top:30px;
+margin-bottom:20px;
+
+}
+
+label{
+
+font-weight:bold;
+
+}
+
+input{
+
+width:100%;
+padding:10px;
+margin-top:8px;
+border-radius:8px;
+border:1px solid #ccc;
+
+}
+
+table{
+
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+
+}
+
+th{
+
+background:#1f2937;
+color:white;
+padding:12px;
+
+}
+
+td{
+
+padding:10px;
+text-align:center;
+border:1px solid #ddd;
+
+}
+
+tr:nth-child(even){
+
+background:#f8fafc;
+
+}
+
+.button{
+
+text-align:center;
+margin-top:25px;
+
+}
+
+button{
+
+padding:10px 20px;
+margin:5px;
+border:none;
+border-radius:8px;
+font-size:15px;
+font-weight:bold;
+cursor:pointer;
+color:white;
+
+}
+
+.cetak{
+
+background:#16a34a;
+
+}
+
+.refresh{
+
+background:#2563eb;
+
+}
+
+.kembali{
+
+background:#6b7280;
+
+}
+
+button:hover{
+
+opacity:0.9;
+
+}
+
+.footer{
+
+text-align:center;
+margin-top:20px;
+color:gray;
+
+}
+
+</style>
+
 </head>
 
 <body>
 
+<div class="container">
+
 <h1>LAPORAN PENJUALAN</h1>
 
-<p>Halaman laporan.</p>
+<div class="info">
+
+<div class="card">
+
+<h2>Total Transaksi</h2>
+
+<p id="jumlahTransaksi">5</p>
+
+</div>
+
+<div class="card">
+
+<h2>Total Barang Terjual</h2>
+
+<p id="jumlahBarang">23</p>
+
+</div>
+
+<div class="card">
+
+<h2>Total Pendapatan</h2>
+
+<p id="pendapatan">Rp 0</p>
+
+</div>
+
+</div>
+
+<div class="filter">
+
+<label>Cari Nama Barang</label>
+
+<input type="text" id="cari" placeholder="Masukkan nama barang..." onkeyup="cariBarang()">
+
+</div>
+
+<table id="tabel">
+
+<tr>
+
+<th>No</th>
+
+<th>Tanggal</th>
+
+<th>Nama Barang</th>
+
+<th>Jumlah</th>
+
+<th>Total</th>
+
+</tr>
+<tr>
+<td>1</td>
+<td>15-07-2026</td>
+<td>Indomie Goreng</td>
+<td>5</td>
+<td>17500</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>15-07-2026</td>
+<td>Aqua 600 ml</td>
+<td>8</td>
+<td>40000</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>15-07-2026</td>
+<td>Teh Botol</td>
+<td>4</td>
+<td>24000</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>15-07-2026</td>
+<td>Roti Coklat</td>
+<td>3</td>
+<td>45000</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>15-07-2026</td>
+<td>Susu UHT</td>
+<td>3</td>
+<td>27000</td>
+</tr>
+
+</table>
+
+<div class="button">
+
+<button class="cetak" onclick="window.print()">
+🖨 Cetak Laporan
+</button>
+
+<button class="refresh" onclick="location.reload()">
+🔄 Refresh
+</button>
 
 <a href="index.html">
-<button>Kembali</button>
+<button type="button" class="kembali">
+🏠 Dashboard
+</button>
 </a>
 
+</div>
+
+<div class="footer">
+
+<p>© 2026 Sistem Kasir</p>
+
+</div>
+
+<script>
+
+hitungTotal();
+
+function hitungTotal(){
+
+let tabel=document.getElementById("tabel");
+
+let total=0;
+
+let barang=0;
+
+for(let i=1;i<tabel.rows.length;i++){
+
+total+=parseInt(tabel.rows[i].cells[4].innerHTML);
+
+barang+=parseInt(tabel.rows[i].cells[3].innerHTML);
+
+}
+
+document.getElementById("pendapatan").innerHTML="Rp "+total.toLocaleString("id-ID");
+
+document.getElementById("jumlahBarang").innerHTML=barang;
+
+document.getElementById("jumlahTransaksi").innerHTML=tabel.rows.length-1;
+
+}function cariBarang(){
+
+let input=document.getElementById("cari").value.toUpperCase();
+
+let tabel=document.getElementById("tabel");
+
+let tr=tabel.getElementsByTagName("tr");
+
+for(let i=1;i<tr.length;i++){
+
+let nama=tr[i].getElementsByTagName("td")[2];
+
+if(nama){
+
+let isi=nama.innerHTML.toUpperCase();
+
+if(isi.indexOf(input)>-1){
+
+tr[i].style.display="";
+
+}else{
+
+tr[i].style.display="none";
+
+}
+
+}
+
+}
+
+}
+
+</script>
+
 </body>
+
 </html>
